@@ -1,7 +1,7 @@
 package com.hillel.multi.service;
 
-import com.hillel.multi.dto.AttendanceInfoDTO;
+import com.hillel.multi.model.classes.Attendance;
 
 public interface AttendanceService {
-    AttendanceInfoDTO present(Long id);
+    Attendance present(Long id);
 }

@@ -1,4 +1,4 @@
-package com.hillel.multi.entity;
+package com.hillel.multi.model.classes;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

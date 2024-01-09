@@ -1,8 +1,10 @@
 package com.hillel.multi.controller;
 
-import com.hillel.multi.dto.HomeworkInfoDTO;
+import com.hillel.multi.controller.api.HomeworkApi;
+import com.hillel.multi.model.classes.Homework;
 import com.hillel.multi.service.HomeworkService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,26 +12,36 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/manager/homework")
-public class HomeworkController {
+public class HomeworkController implements HomeworkApi {
     private final HomeworkService homeworkService;
-    @PostMapping
-    public HomeworkInfoDTO createHomework(@RequestBody HomeworkInfoDTO createHomeworkSDTO){
-        return homeworkService.create(createHomeworkSDTO);
+
+    @Override
+    public ResponseEntity<List<Homework>> getAllHomeworks() {
+        List<Homework> homeworks = homeworkService.getAllHomeworks();
+        return ResponseEntity.ok(homeworks);
     }
-    @GetMapping
-    public HomeworkInfoDTO readHomework(@RequestParam Long id){
-        return homeworkService.read(id);
+
+    @Override
+    public ResponseEntity<Homework> createHomework(Homework homework) {
+        Homework createHomework = homeworkService.createHomework(homework);
+        return ResponseEntity.ok(createHomework);
     }
-    @PutMapping
-    public HomeworkInfoDTO updateHomework(@RequestBody HomeworkInfoDTO updateHomeworkDTO, @RequestParam Long id){
-        return homeworkService.update(updateHomeworkDTO, id);
+
+    @Override
+    public ResponseEntity<Homework> getHomeworkById(Long id) {
+        Homework homework = homeworkService.getByIdHomework(id);
+        return ResponseEntity.ok(homework);
     }
-    @DeleteMapping
-    public void deleteHomework(@RequestParam Long id){
-        homeworkService.delete(id);
+
+    @Override
+    public ResponseEntity<Homework> updateHomework(Long id, Homework homework) {
+        Homework updateHomework = homeworkService.getByIdHomework(id);
+        return ResponseEntity.ok(updateHomework);
     }
-    @GetMapping("/list")
-    public List<HomeworkInfoDTO> homeworkList(){
-        return homeworkService.getAll();
+
+    @Override
+    public ResponseEntity<Void> deleteHomework(Long id) {
+        homeworkService.deleteHomework(id);
+        return ResponseEntity.noContent().build();
     }
 }

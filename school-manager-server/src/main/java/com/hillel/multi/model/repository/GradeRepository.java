@@ -1,6 +1,6 @@
-package com.hillel.multi.repository;
+package com.hillel.multi.model.repository;
 
-import com.hillel.multi.entity.Grade;
+import com.hillel.multi.model.classes.Grade;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

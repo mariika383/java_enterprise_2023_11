@@ -1,4 +1,4 @@
-package com.hillel.multi.entity;
+package com.hillel.multi.model.classes;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,16 +8,17 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class Grade {
+public class Homework {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String subject;
+    private String description;
     @Column
-    private double grade;
+    private Date dueDate;
 }

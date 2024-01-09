@@ -1,7 +1,7 @@
 package com.hillel.multi.service.impl;
 
-import com.hillel.multi.dto.GradeInfoDTO;
-import com.hillel.multi.repository.GradeRepository;
+import com.hillel.multi.model.classes.Grade;
+import com.hillel.multi.model.repository.GradeRepository;
 import com.hillel.multi.service.GradeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,28 +13,29 @@ import java.util.List;
 public class GradeServiceImpl implements GradeService {
 
     private final GradeRepository gradeRepository;
+
     @Override
-    public GradeInfoDTO create(GradeInfoDTO gradeInfoDTO) {
+    public Grade createGrade(Grade grade) {
         return null;
     }
 
     @Override
-    public GradeInfoDTO read(Long id) {
+    public Grade getGradeById(Long id) {
         return null;
     }
 
     @Override
-    public GradeInfoDTO update(GradeInfoDTO gradeInfoDTO, Long id) {
+    public Grade updateGrade(Grade grade, Long id) {
         return null;
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteGrade(Long id) {
 
     }
 
     @Override
-    public List<GradeInfoDTO> getAll() {
+    public List<Grade> getAllGrades() {
         return null;
     }
 }

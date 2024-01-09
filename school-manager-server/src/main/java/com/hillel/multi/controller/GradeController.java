@@ -1,8 +1,11 @@
 package com.hillel.multi.controller;
 
-import com.hillel.multi.dto.GradeInfoDTO;
+import com.hillel.multi.controller.api.GradeApi;
+import com.hillel.multi.model.classes.Grade;
+
 import com.hillel.multi.service.GradeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,26 +13,36 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/manager/grade")
-public class GradeController {
+public class GradeController implements GradeApi {
     private final GradeService gradeService;
-    @PostMapping
-    public GradeInfoDTO createGrade(@RequestBody GradeInfoDTO createGradeSDTO){
-        return gradeService.create(createGradeSDTO);
+
+    @Override
+    public ResponseEntity<List<Grade>> getAllGrades() {
+        List<Grade> students = gradeService.getAllGrades();
+        return ResponseEntity.ok(students);
     }
-    @GetMapping
-    public GradeInfoDTO readGrade(@RequestParam Long id){
-        return gradeService.read(id);
+
+    @Override
+    public ResponseEntity<Grade> createGrade(Grade grade) {
+        Grade createGrade = gradeService.createGrade(grade);
+        return ResponseEntity.ok(createGrade);
     }
-    @PutMapping
-    public GradeInfoDTO updateGrade(@RequestBody GradeInfoDTO updateGradeDTO, @RequestParam Long id){
-        return gradeService.update(updateGradeDTO, id);
+
+    @Override
+    public ResponseEntity<Grade> getGradeById(Long id) {
+        Grade grade = gradeService.getGradeById(id);
+        return ResponseEntity.ok(grade);
     }
-    @DeleteMapping
-    public void deleteGrade(@RequestParam Long id){
-        gradeService.delete(id);
+
+    @Override
+    public ResponseEntity<Grade> updateGrade(Long id, Grade grade) {
+        Grade updateGrade = gradeService.updateGrade(grade, id);
+        return ResponseEntity.ok(updateGrade);
     }
-    @GetMapping("/list")
-    public List<GradeInfoDTO> gradeList(){
-        return gradeService.getAll();
+
+    @Override
+    public ResponseEntity<Void> deleteGrade(Long id) {
+        gradeService.deleteGrade(id);
+        return ResponseEntity.noContent().build();
     }
 }

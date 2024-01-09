@@ -1,6 +1,6 @@
-package com.hillel.multi.repository;
+package com.hillel.multi.model.repository;
 
-import com.hillel.multi.entity.Attendance;
+import com.hillel.multi.model.classes.Attendance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

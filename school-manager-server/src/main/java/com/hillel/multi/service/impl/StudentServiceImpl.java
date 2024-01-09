@@ -1,7 +1,7 @@
 package com.hillel.multi.service.impl;
 
-import com.hillel.multi.dto.StudentInfoDTO;
-import com.hillel.multi.repository.StudentRepository;
+import com.hillel.multi.model.classes.Student;
+import com.hillel.multi.model.repository.StudentRepository;
 import com.hillel.multi.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,28 +12,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
+
+
     @Override
-    public StudentInfoDTO create(StudentInfoDTO studentInfoDTO) {
+    public List<Student> getAllStudents() {
         return null;
     }
 
     @Override
-    public StudentInfoDTO read(Long id) {
+    public Student createStudent(Student student) {
         return null;
     }
 
     @Override
-    public StudentInfoDTO update(StudentInfoDTO studentInfoDTO, Long id) {
+    public Student getStudentById(Long studentId) {
         return null;
     }
 
     @Override
-    public void delete(Long id) {
-
+    public Student updateStudent(Long studentId, Student student) {
+        return null;
     }
 
     @Override
-    public List<StudentInfoDTO> getAll() {
-        return null;
+    public void deleteStudent(Long studentId) {
+
     }
 }
