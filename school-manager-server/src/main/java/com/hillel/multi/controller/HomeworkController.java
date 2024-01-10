@@ -1,6 +1,5 @@
 package com.hillel.multi.controller;
 
-import com.hillel.multi.controller.api.HomeworkApi;
 import com.hillel.multi.model.classes.Homework;
 import com.hillel.multi.service.HomeworkService;
 import lombok.RequiredArgsConstructor;
@@ -12,35 +11,33 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/manager/homework")
-public class HomeworkController implements HomeworkApi {
+public class HomeworkController  {
     private final HomeworkService homeworkService;
-
-    @Override
+    @GetMapping
     public ResponseEntity<List<Homework>> getAllHomeworks() {
         List<Homework> homeworks = homeworkService.getAllHomeworks();
         return ResponseEntity.ok(homeworks);
     }
 
-    @Override
-    public ResponseEntity<Homework> createHomework(Homework homework) {
+    @PostMapping
+    public ResponseEntity<Homework> createHomework(@RequestBody Homework homework) {
         Homework createHomework = homeworkService.createHomework(homework);
         return ResponseEntity.ok(createHomework);
     }
-
-    @Override
-    public ResponseEntity<Homework> getHomeworkById(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Homework> getHomeworkById(@PathVariable Long id) {
         Homework homework = homeworkService.getByIdHomework(id);
         return ResponseEntity.ok(homework);
     }
 
-    @Override
-    public ResponseEntity<Homework> updateHomework(Long id, Homework homework) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Homework> updateHomework(@PathVariable Long id, @RequestBody Homework homework) {
         Homework updateHomework = homeworkService.getByIdHomework(id);
         return ResponseEntity.ok(updateHomework);
     }
 
-    @Override
-    public ResponseEntity<Void> deleteHomework(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteHomework(@PathVariable Long id) {
         homeworkService.deleteHomework(id);
         return ResponseEntity.noContent().build();
     }

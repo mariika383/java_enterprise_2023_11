@@ -25,17 +25,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getStudentById(Long studentId) {
+    public Student getStudentById(Long id) {
         return null;
     }
 
     @Override
-    public Student updateStudent(Long studentId, Student student) {
+    public Student updateStudent(Long id, Student student) {
         return null;
     }
 
     @Override
-    public void deleteStudent(Long studentId) {
+    public void deleteStudent(Long id) {
 
     }
 }

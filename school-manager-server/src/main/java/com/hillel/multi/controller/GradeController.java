@@ -1,6 +1,5 @@
 package com.hillel.multi.controller;
 
-import com.hillel.multi.controller.api.GradeApi;
 import com.hillel.multi.model.classes.Grade;
 
 import com.hillel.multi.service.GradeService;
@@ -13,35 +12,31 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/manager/grade")
-public class GradeController implements GradeApi {
+public class GradeController {
     private final GradeService gradeService;
-
-    @Override
+    @GetMapping
     public ResponseEntity<List<Grade>> getAllGrades() {
         List<Grade> students = gradeService.getAllGrades();
         return ResponseEntity.ok(students);
     }
-
-    @Override
-    public ResponseEntity<Grade> createGrade(Grade grade) {
+    @PostMapping
+    public ResponseEntity<Grade> createGrade(@RequestBody Grade grade) {
         Grade createGrade = gradeService.createGrade(grade);
         return ResponseEntity.ok(createGrade);
     }
 
-    @Override
-    public ResponseEntity<Grade> getGradeById(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Grade> getGradeById(@PathVariable Long id) {
         Grade grade = gradeService.getGradeById(id);
         return ResponseEntity.ok(grade);
     }
-
-    @Override
-    public ResponseEntity<Grade> updateGrade(Long id, Grade grade) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Grade> updateGrade(@PathVariable Long id, Grade grade) {
         Grade updateGrade = gradeService.updateGrade(grade, id);
         return ResponseEntity.ok(updateGrade);
     }
-
-    @Override
-    public ResponseEntity<Void> deleteGrade(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteGrade(@PathVariable Long id) {
         gradeService.deleteGrade(id);
         return ResponseEntity.noContent().build();
     }

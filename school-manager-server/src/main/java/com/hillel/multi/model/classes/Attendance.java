@@ -20,5 +20,5 @@ public class Attendance {
     @Column
     private Date date;
     @Column
-    private boolean present;
+    private String status;
 }

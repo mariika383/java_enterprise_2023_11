@@ -18,7 +18,7 @@ public class Homework {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String description;
+    private String subject;
     @Column
-    private Date dueDate;
+    private String description;
 }

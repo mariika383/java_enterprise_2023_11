@@ -19,5 +19,5 @@ public class Grade {
     @Column
     private String subject;
     @Column
-    private double grade;
+    private String value;
 }
