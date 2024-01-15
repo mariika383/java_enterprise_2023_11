@@ -79,6 +79,39 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/SuccessNoContent'
+  /homework:
+    get:
+      summary: Get list of homework
+      tags:
+        - homework
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+          examples:
+            application/json:
+              $ref: '#/components/examples/HomeworkList'
+  /attendance:
+    get:
+      summary: Get attendance records
+      tags:
+        - attendance
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+          examples:
+            application/json:
+              $ref: '#/components/examples/AttendanceList'
+  /grade:
+    get:
+      summary: Get grade records
+      tags:
+        - grade
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+          examples:
+            application/json:
+              $ref: '#/components/examples/GradeList'
 components:
   schemas:
     Student:
@@ -89,6 +122,33 @@ components:
         firstName:
           type: string
         lastName:
+          type: string
+    Homework:
+      type: object
+      properties:
+        id:
+          type: integer
+        subject:
+          type: string
+        description:
+          type: string
+    Attendance:
+      type: object
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+        status:
+          type: string
+    Grade:
+      type: object
+      properties:
+        id:
+          type: integer
+        subject:
+          type: string
+        value:
           type: string
   parameters:
     studentId:
@@ -113,6 +173,21 @@ components:
             message: Student created successfully
     SuccessNoContent:
       description: Successful response with no content
+    HomeworkList:
+      value:
+        - id: 1
+          subject: Math
+          description: Solve exercises 1-10
+    AttendanceList:
+      value:
+        - id: 1
+          date: 2024-01-10
+          status: Present
+    GradeList:
+      value:
+        - id: 1
+          subject: English
+          value: A
   examples:
     StudentList:
       value:
@@ -124,3 +199,18 @@ components:
         id: 1
         firstName: Іван
         lastName: Іванов
+    HomeworkList:
+      value:
+        - id: 1
+          subject: Math
+          description: Solve exercises 1-10
+    AttendanceList:
+      value:
+        - id: 1
+          date: 2024-01-10
+          status: Present
+    GradeList:
+      value:
+        - id: 1
+          subject: English
+          value: A
