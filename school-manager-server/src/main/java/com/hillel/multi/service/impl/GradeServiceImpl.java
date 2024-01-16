@@ -1,7 +1,7 @@
 package com.hillel.multi.service.impl;
 
-import com.hillel.multi.model.classes.Grade;
-import com.hillel.multi.model.repository.GradeRepository;
+import com.hillel.model.Grade;
+import com.hillel.multi.repository.GradeRepository;
 import com.hillel.multi.service.GradeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,7 @@
 package com.hillel.multi.service;
 
-import com.hillel.multi.model.classes.Grade;
+
+import com.hillel.model.Grade;
 
 import java.util.List;
 

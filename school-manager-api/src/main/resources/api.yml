@@ -1,0 +1,336 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "School Manager API",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "student",
+      "description": "Operations related to students"
+    },
+    {
+      "name": "attendance",
+      "description": "Operations related to attendance"
+    },
+    {
+      "name": "homework",
+      "description": "Operations related to homework"
+    },
+    {
+      "name": "grade",
+      "description": "Operations related to grades"
+    }
+  ],
+  "paths": {
+    "/students": {
+      "get": {
+        "summary": "Get list of students",
+        "tags": [
+          "student"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/StudentList"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new student",
+        "tags": [
+          "student"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/StudentCreated",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/Student"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/students/{studentId}": {
+      "get": {
+        "summary": "Get details of a student",
+        "tags": [
+          "student"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/studentId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/Student"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update information of a student",
+        "tags": [
+          "student"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/studentId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/Student"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a student",
+        "tags": [
+          "student"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/studentId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/SuccessNoContent"
+          }
+        }
+      }
+    },
+    "/homework": {
+      "get": {
+        "summary": "Get list of homework",
+        "tags": [
+          "homework"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/HomeworkList"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attendance": {
+      "get": {
+        "summary": "Get attendance records",
+        "tags": [
+          "attendance"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/AttendanceList"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/grade": {
+      "get": {
+        "summary": "Get grade records",
+        "tags": [
+          "grade"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SuccessResponse",
+            "examples": {
+              "application/json": {
+                "$ref": "#/components/examples/GradeList"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Student": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          }
+        }
+      },
+      "Homework": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Attendance": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "Grade": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "studentId": {
+        "name": "studentId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "responses": {
+      "SuccessResponse": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "example": {
+              "message": "Success"
+            }
+          }
+        }
+      },
+      "StudentCreated": {
+        "description": "Student created successfully",
+        "content": {
+          "application/json": {
+            "example": {
+              "message": "Student created successfully"
+            }
+          }
+        }
+      },
+      "SuccessNoContent": {
+        "description": "Successful response with no content"
+      }
+    },
+    "examples": {
+      "StudentList": {
+        "value": [
+          {
+            "id": 1,
+            "firstName": "Іван",
+            "lastName": "Іванов"
+          }
+        ]
+      },
+      "Student": {
+        "value": {
+          "id": 1,
+          "firstName": "Іван",
+          "lastName": "Іванов"
+        }
+      },
+      "HomeworkList": {
+        "value": [
+          {
+            "id": 1,
+            "subject": "Math",
+            "description": "Solve exercises 1-10"
+          }
+        ]
+      },
+      "AttendanceList": {
+        "value": [
+          {
+            "id": 1,
+            "date": "2024-01-10T00:00:00.000Z",
+            "status": "Present"
+          }
+        ]
+      },
+      "GradeList": {
+        "value": [
+          {
+            "id": 1,
+            "subject": "English",
+            "value": "A"
+          }
+        ]
+      }
+    }
+  }
+}

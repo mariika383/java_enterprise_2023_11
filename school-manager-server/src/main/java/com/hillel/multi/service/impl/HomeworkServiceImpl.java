@@ -1,8 +1,8 @@
 package com.hillel.multi.service.impl;
 
 
-import com.hillel.multi.model.classes.Homework;
-import com.hillel.multi.model.repository.HomeworkRepository;
+import com.hillel.model.Homework;
+import com.hillel.multi.repository.HomeworkRepository;
 import com.hillel.multi.service.HomeworkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

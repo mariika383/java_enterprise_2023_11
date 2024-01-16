@@ -1,7 +1,8 @@
 package com.hillel.multi.service;
 
 
-import com.hillel.multi.model.classes.Student;
+
+import com.hillel.model.Student;
 
 import java.util.List;
 

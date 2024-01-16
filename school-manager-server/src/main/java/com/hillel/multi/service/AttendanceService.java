@@ -1,7 +1,8 @@
 package com.hillel.multi.service;
 
 
-import com.hillel.multi.model.classes.Attendance;
+
+import com.hillel.model.Attendance;
 
 import java.util.List;
 
