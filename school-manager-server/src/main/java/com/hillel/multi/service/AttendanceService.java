@@ -11,4 +11,7 @@ public interface AttendanceService {
     Attendance getAttendanceById (Long id);
     Attendance updateAttendance(Attendance attendance, Long id);
     void deleteAttendance(Long id);
-    List<Attendance> getAllAttendances();}
+    List<Attendance> getAllAttendances();
+    boolean checkAttendance();
+    boolean isWorkingDay(java.time.DayOfWeek dayOfWeek);
+}

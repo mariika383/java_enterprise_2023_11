@@ -38,4 +38,18 @@ public class AttendanceServiceImpl implements AttendanceService {
     public List<Attendance> getAllAttendances() {
         return null;
     }
+
+
+    @Override
+    public boolean checkAttendance() {
+
+            java.time.DayOfWeek currentDayOfWeek = java.time.DayOfWeek.from(java.time.LocalDate.now());
+
+            return isWorkingDay(currentDayOfWeek);
+        }
+        @Override
+        public boolean isWorkingDay(java.time.DayOfWeek dayOfWeek) {
+            return dayOfWeek != java.time.DayOfWeek.SATURDAY && dayOfWeek != java.time.DayOfWeek.SUNDAY;
+
+    }
 }
