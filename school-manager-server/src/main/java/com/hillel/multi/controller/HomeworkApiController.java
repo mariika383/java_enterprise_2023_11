@@ -13,13 +13,14 @@ import java.util.List;
 public class HomeworkApiController implements HomeworkApi {
     @Autowired
     private HomeworkService homeworkService;
-    @Override
-    public ResponseEntity<List<Homework>> homeworkGet() {
-        List<Homework> homeworkList = homeworkService.getAllHomeworks();
 
+    @Override
+    public ResponseEntity<Void> homeworkGet() {
+        List<Homework> homeworkList = homeworkService.getAllHomeworks();
         if (homeworkList.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.ok(homeworkList);
-        }    }
+            return (ResponseEntity<Void>) ResponseEntity.ok();
+        }
+    }
 }

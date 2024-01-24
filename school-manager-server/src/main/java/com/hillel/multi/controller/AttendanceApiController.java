@@ -11,6 +11,7 @@ public class AttendanceApiController implements AttendanceApi {
 
     @Autowired
     private AttendanceService attendanceService;
+
     @Override
     public ResponseEntity<Void> attendanceGet() {
         boolean isPresent = attendanceService.checkAttendance();

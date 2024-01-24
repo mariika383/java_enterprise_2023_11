@@ -15,17 +15,13 @@ import java.util.List;
 public class GradeApiController implements GradeApi {
     @Autowired
     private GradeService gradeService;
+
     @Override
-    public ResponseEntity<String> gradeGet() {
-        try {
-            List<Grade> grades = gradeService.getAllGrades();
+    public ResponseEntity<Void> gradeGet() {
+        List<Grade> grades = gradeService.getAllGrades();
             if (grades != null && !grades.isEmpty()) {
-                return ResponseEntity.ok(grades.toString());
+                return (ResponseEntity<Void>) ResponseEntity.ok();
             } else {
                 return ResponseEntity.notFound().build();
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Internal Server Error: " + e.getMessage());
-        }
-    }
+            }    }
 }
